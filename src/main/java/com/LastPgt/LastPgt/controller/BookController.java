@@ -1,8 +1,6 @@
 package com.LastPgt.LastPgt.controller;
 
-import com.LastPgt.LastPgt.model.Author;
 import com.LastPgt.LastPgt.model.Book;
-import com.LastPgt.LastPgt.model.Genre;
 import com.LastPgt.LastPgt.service.bookService.BookService;
 import com.LastPgt.LastPgt.service.authorService.AuthorService;
 import com.LastPgt.LastPgt.service.genreService.GenreService;
@@ -10,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,8 +33,8 @@ public class BookController {
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         model.addAttribute("book", new Book());
-        model.addAttribute("authors", authorService.findAllAuthors());  // Передаем список авторов
-        model.addAttribute("genres", genreService.findAllGenres());  // Передаем список жанров
+        model.addAttribute("authors", authorService.findAllAuthors());
+        model.addAttribute("genres", genreService.findAllGenres());
         return "books/create";
     }
 
@@ -53,8 +49,8 @@ public class BookController {
         Optional<Book> book = bookService.findBookById(id);
         if (book.isPresent()) {
             model.addAttribute("book", book.get());
-            model.addAttribute("authors", authorService.findAllAuthors());  // Передаем список авторов
-            model.addAttribute("genres", genreService.findAllGenres());  // Передаем список жанров
+            model.addAttribute("authors", authorService.findAllAuthors());
+            model.addAttribute("genres", genreService.findAllGenres());
         }
         return "books/edit";
     }

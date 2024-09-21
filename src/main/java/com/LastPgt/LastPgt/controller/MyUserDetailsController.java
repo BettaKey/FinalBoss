@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +33,6 @@ public class MyUserDetailsController {
     public String showCreateForm(Model model) {
         model.addAttribute("userDetails", new MyUserDetails());
 
-        // Передаем список всех пользователей для выпадающего списка
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);
 
@@ -53,7 +51,6 @@ public class MyUserDetailsController {
         Optional<MyUserDetails> userDetails = myUserDetailsService.findUserDetailsById(id);
         userDetails.ifPresent(value -> model.addAttribute("userDetails", value));
 
-        // Передаем список всех пользователей для выпадающего списка
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);
 

@@ -4,7 +4,6 @@ import com.LastPgt.LastPgt.model.User;
 import com.LastPgt.LastPgt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

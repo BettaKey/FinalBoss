@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -38,11 +37,9 @@ public class BookLoanController {
     public String showCreateForm(Model model) {
         model.addAttribute("bookloan", new BookLoan());
 
-        // Передаем список книг
         List<Book> books = bookService.findAllBooks();
         model.addAttribute("books", books);
 
-        // Передаем список пользователей
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);
 
@@ -61,11 +58,9 @@ public class BookLoanController {
         Optional<BookLoan> bookLoan = bookLoanService.findBookLoanById(id);
         bookLoan.ifPresent(value -> model.addAttribute("bookloan", value));
 
-        // Передаем список книг
         List<Book> books = bookService.findAllBooks();
         model.addAttribute("books", books);
 
-        // Передаем список пользователей
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);
 

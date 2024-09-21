@@ -6,12 +6,36 @@
     <title>Главная страница</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .centered-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -19,9 +43,9 @@
 
 <th:block th:insert="~{fragments/navbar :: navbar}"></th:block>
 
-<div class="container mt-4 centered-content">
-    <img src="\dobry_den.jpg" alt="Кпртинка" class="img-fluid" style="max-width: 50%;">
-    <div class="text-center mt-4">
+<div class="background-image">
+    <img src="/why.jpg" alt="Картинка">
+    <div class="overlay-text">
         <h2>Вот это да!</h2>
         <p>Оно реально работает</p>
     </div>

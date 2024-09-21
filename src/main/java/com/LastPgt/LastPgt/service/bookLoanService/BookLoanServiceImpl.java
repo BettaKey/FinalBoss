@@ -2,10 +2,8 @@ package com.LastPgt.LastPgt.service.bookLoanService;
 
 import com.LastPgt.LastPgt.model.BookLoan;
 import com.LastPgt.LastPgt.repository.BookLoanRepository;
-import com.LastPgt.LastPgt.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

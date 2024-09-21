@@ -11,7 +11,7 @@
 <th:block th:insert="~{fragments/navbar :: navbar}"></th:block>
 
 <div class="container mt-4">
-  <h2>Изменить выдачу</h2>
+  <h2>Изменить запись</h2>
   <form action="#" th:action="@{/bookloans/update/{id}(id=${bookloan.loanId})}" th:object="${bookloan}" method="post">
     <div class="mb-3">
       <label for="user" class="form-label">Пользователь</label>

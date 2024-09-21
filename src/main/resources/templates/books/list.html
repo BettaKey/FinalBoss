@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Include Navbar -->
+<th:block th:insert="~{fragments/navbar :: navbar}"></th:block>
+
+<div class="container mt-4">
+    <h2>Books List</h2>
+    <a class="btn btn-primary mb-3" href="/books/create">Создать новую книгу</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Год публикации</th>
+            <th>Авторы</th>
+            <th>Жанры</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.publicationYear}"></td>
+
+            <td>
+            <span th:each="author, iterStat : ${book.authors}">
+              <span th:text="${author.authorName}"></span><span th:if="${!iterStat.last}">, </span>
+            </span>
+            </td>
+
+            <td>
+            <span th:each="genre, iterStat : ${book.genres}">
+              <span th:text="${genre.genreName}"></span><span th:if="${!iterStat.last}">, </span>
+            </span>
+            </td>
+
+            <td>
+                <a th:href="@{/books/edit/{id}(id=${book.bookId})}" class="btn btn-warning">Изменить</a>
+                <a th:href="@{/books/delete/{id}(id=${book.bookId})}" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
